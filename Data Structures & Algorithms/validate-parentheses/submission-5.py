@@ -5,11 +5,8 @@ class Solution:
         for c in s:
             if c in check.keys():
                 stack.append(c)
-            elif c in check.values():
-                if not stack:
-                    return False
-                else:
-                    value=stack.pop()
-                    if check[value]!=c:
-                        return False
+            elif stack and check[stack[-1]]==c:
+                value=stack.pop()
+            else:
+                return False
         return not stack
